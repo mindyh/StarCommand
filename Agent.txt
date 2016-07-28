@@ -1,0 +1,24 @@
+server.log("agent started");
+
+device.on("potValue", function(value) {  
+    
+    local name = "pot1";
+    local sensor = {};
+    sensor.player <- 1;
+    sensor.name <- name;
+    sensor.value <- value;
+    
+    local encoded = http.jsonencode(sensor);
+    local jsonencoded = http.jsonencode({"json" : sensor});
+    server.log(jsonencoded);
+    
+  // local encoded = http.urlencode({name="pot", val=value});
+    
+    //server.log(encoded);
+    
+    local request = http.post("http://starcommand.evansforschoolboard.com/updateState.php",
+       { "Content-Type": "application/json" },
+       jsonencoded);
+    local response = request.sendsync();
+    server.log("Response: "+response.statuscode+"; "+response.body);
+});

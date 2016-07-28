@@ -1,0 +1,320 @@
+/* 
+Star Commander
+*/  
+
+/*******
+RESET
+*******/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, input, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*****
+FONTS
+*****/
+
+/*********
+GENERAL STYLES
+*********/
+
+html, body {width: 100%;
+	height: 100%;
+	background-color: #000;
+	-webkit-text-size-adjust: none;}
+
+/* for sticky footer */
+
+#sticky-body-wrapper { height: 100%; }
+body > #sticky-body-wrapper {height: auto; min-height: 100%;}
+
+
+body, h1, h2, h3, h4, h5, h6, p, input, textarea, li, div, table {font-family: 'Orbitron', Helvetica, Arial, Sans-Serif;}
+
+strong, b {font-weight: bold;}
+em, i {font-style: italic;}
+
+.hide {display: none;}
+
+/* Clearfix */
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;}
+
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+
+
+/****
+HEADER
+****/
+
+#header-wrapper {width: 100%;
+	background-color: #C1C1C1;
+	border-bottom: 1px solid #ddd;}
+
+header {width: 100%;
+	padding: 22px 0 17px 0;
+	text-align: center;}
+
+header h1 {font-size: 2.6em;
+	margin: 0 auto;
+	font-weight: bold;
+	text-shadow: rgba(255,255,255,0.8) 0 1px 1px;}
+
+header h1 span#logo-star {background-image: url('img/logo-star.png');
+	background-repeat: no-repeat;
+	width: 39px;
+	display: inline-block;}
+
+
+/****
+BODY
+****/
+
+#header-wrapper {width: 100%;
+	border-bottom: 1px solid #ddd;}
+
+#body {width: 100%;
+	text-align: center;
+	color: #fff;
+	margin: 40px 0 10px 0;
+	overflow:auto;
+	padding-bottom: 50px;}
+
+
+/**
+Overview & Game Over Modals
+**/
+
+.modal-wrapper {width: 100%;
+	background-color: rgba (0,0,0,1);
+	text-align: center;
+	z-index: 100;}
+
+.modal {background-color: #009CDB;
+	width: 50%;
+	margin: 30px auto;
+	padding: 40px 40px 30px 40px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+	min-height: 180px;}
+
+.modal h3 {font-weight: bold;
+	font-size: 1.7em;
+	margin-bottom: 15px;
+	text-shadow: #00649D 0 1px 1px;}
+
+.modal p {font-weight: 400;
+	font-size: 1.2em;
+	margin-bottom: 15px;
+	line-height: 1.3;
+	text-shadow: #00649D 0 1px 1px;}
+
+.modal a.button {display: inline-block;
+	background-color: #fff;
+	border: 1px solid #00649D;
+	color: #009CDB;
+	text-decoration: none;
+	padding: 17px 15px 15px 15px;
+	font-weight: bold;
+	font-size: 1.3em;
+	margin: 10px 0 0px 0;
+	-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-o-border-radius: 3px;
+		-ms-border-radius: 3px;
+		border-radius: 3px;
+	-webkit-transition: border .2s ease-in-out, margin-bottom .3s ease-in-out, color .2s ease-in-out;
+    -webkit-animation-delay: 1s;
+
+}
+
+.modal a.button:hover {border-top: 3px solid #00427b;
+	color: #FF4100;}
+
+.modal a.button:active {-webkit-box-shadow: inset 0 1px 5px 1px rgba(0,0,0,.5);
+	background-color: #ddd;
+	text-shadow: rgba(255,255,255,0.8) 0 1px 1px;}
+
+#game-over {min-height: 235px;}
+
+
+/**
+Commands
+**/
+
+.instructions {border: 5px solid #009CDB;
+	width: 80%;
+	margin: 0 auto;
+	-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-o-border-radius: 3px;
+		-ms-border-radius: 3px;
+		border-radius: 3px;}
+
+.instructions h2 {margin: 30px;
+	font-size: 2em;
+	color:  #009CDB;
+	line-height: 2em;}
+
+.instructions h2 span.sensor, .instructions h2 span.setting {display: block;
+	font-weight: bold;
+	font-size: 1.9em;}
+
+
+
+/**
+Status Updates
+**/
+
+.status {width: 80%;
+	margin: 50px auto 1px auto;}
+
+.status .status-block {
+	text-align: left;}
+
+.status h4 {
+	text-transform: uppercase;
+	color: #818181;
+	font-size: 1.5em;
+	margin-bottom: 10px;}
+
+.status h3 {
+	color: #FF4100;
+	font-size: 2.5em;}
+
+.status #timer {float: left;}
+
+.status #lives {float: right;}
+
+/* .status #lives h3 {font-size: 3em;
+	letter-spacing: 2px;}
+
+.status #lives h3 .dead {opacity: .5;
+	-webkit-transition: opacity .5s ease-in-out;
+	-moz-transition: opacity .5s ease-in-out;
+	transition: opacity .5s ease-in-out;}
+
+.status #lives h3 .dead:hover {opacity: 1;} */
+
+
+
+/****
+FOOTER
+****/
+
+#footer-wrapper {width: 100%;
+	background-color: #222;
+	position: relative;
+	margin-top: -50px;
+	height: 50px;
+	clear:both;}
+
+footer {width: 100%;
+	padding: 20px 0 17px 0;
+	text-align: center;}
+
+footer p {color: #777;
+	font-size: .8em;
+	font-family: "Open Sans";}
+
+
+
+/***********
+RESPONSIVE LAYOUTS
+***********/
+
+
+/**** SMARTPHONES ****/
+@media only screen 
+and (max-width: 550px) {
+
+/* Header */
+
+header h1 {font-size: 1.6em;}
+
+header h1 span#logo-star {background-size: 100%;
+	background-position: 0px 0;
+	width: 25px;}
+
+/* Modals */
+
+#body {font-size: 70%;
+	margin-top: 10px;}
+
+.modal {width: 70%;
+	margin: 20px auto;
+	padding: 20px;}
+
+.modal h3 {line-height: 1.3;}
+
+/* Commands */
+
+.instructions {margin-top: 20px;}
+
+.instructions h2 {font-size: 140%;
+	margin: 20px;}
+
+.instructions h2 span {font-size: 100%;}
+
+/* Status */
+
+.status {font-size: 80%;}
+
+/* Footer */
+
+footer p {font-size: 70%;}
+
+}
+
+
+
+
+
+

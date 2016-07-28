@@ -1,0 +1,80 @@
+// April with potentiometer 
+ 
+// Configure hardware
+ 
+// pin 8 is an analog input (we read the voltage on the pin with an ADC)
+// analog inputs read a value between 0 (for 0 V) and 65,535 (16-bit ADC) for the imp's supply voltage, which should be 3.3V
+hardware.pin8.configure(ANALOG_IN);
+
+ 
+// you can read the imp's input voltage at any time with:
+local voltage = hardware.voltage();
+server.log(format("Running at %.2f V", voltage));
+ 
+// We use this variable to create a "dead band" around the current value on the potentiometer
+// this can be used to decrease the rate at which we push data to planner by discarding values that
+// are the same as the last one
+local lastRawValue8 = 0;
+local lastValueOut = 0;
+ 
+server.log("Hardware Configured");
+ 
+function checkPot() {
+    //Button 1
+    local button1 = hardware.pin1.read();
+
+    //Button 2
+    local button2 = hardware.pin2.read();
+    
+    //Potentiometer 8
+    local rawValue8 = hardware.pin8.read();
+    local potValue8 = 0;
+    local potValueOut = 9001;
+    
+    if (math.abs(rawValue8 - lastRawValue8) > 150) {
+        potValue8 = rawValue8 / 65535.0;
+        lastRawValue8 = rawValue8;
+        
+        // Assigns a clean value for potValueOut
+        if (potValue8>0.9){
+            potValueOut=5;
+        }
+        else if (potValue8>0.7){
+            potValueOut=4;
+        }
+        else if(potValue8>0.5){
+           potValueOut=3;
+        }
+        else if(potValue8>0.25){
+            potValueOut=2;
+        }
+        else if(potValue8>0.1){
+            potValueOut=1;
+        }
+        else {
+            potValueOut=0;
+        }
+        // note that we divide by 65535.0 to get a value between 0.0 and 1.0
+        
+        if(potValueOut != lastValueOut){
+            agent.send("potValue", potValueOut);
+        }
+        
+        lastValueOut = potValueOut;
+        
+        server.show(format("%2d %2d %2d", potValueOut, button1, button2));
+    }
+    
+    
+    imp.wakeup(0.01, checkPot);
+}
+
+hardware.pin1.configure(DIGITAL_IN_PULLUP, checkPot);
+hardware.pin2.configure(DIGITAL_IN_PULLUP, checkPot);
+ 
+ 
+server.log("Potentiometer Started");
+imp.configure("Potentiometer", [], []);
+checkPot();
+ 
+//EOF
